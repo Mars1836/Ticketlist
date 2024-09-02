@@ -2,8 +2,8 @@ import { MongoMemoryServer } from "mongodb-memory-server";
 
 import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
-import { _const } from "@cl-ticket/common";
 import { randomBytes } from "crypto";
+import { constEnv } from "../configs/env";
 // This will create an new instance of "MongoMemoryServer" and automatically start it
 let mongod: MongoMemoryServer;
 declare global {
@@ -17,7 +17,7 @@ global.login = () => {
     email: `test${getRandomSuffix()}@gmail.com`,
     id: new mongoose.Types.ObjectId().toString(),
   };
-  const payloadSign = jwt.sign(payload, _const.jwtSecret!);
+  const payloadSign = jwt.sign(payload, constEnv.jwtSecret!);
   const coo = Buffer.from(JSON.stringify({ jwt: payloadSign })).toString(
     "base64"
   );
