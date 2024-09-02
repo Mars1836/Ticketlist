@@ -13,7 +13,7 @@ jobs:
         with:
           node-version: '20'  
       - name: Install dependencies
-        run: cd auth && npm install
+        run: cd order && npm install
 
       - name: Run tests
-        run: cd auth && npm run test:ci
+        run: cd order && npm run test:ci
