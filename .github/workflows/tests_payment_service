@@ -1,4 +1,4 @@
-name: tests-expiration
+name: tests-payment
 on:
   pull_request
 jobs:
