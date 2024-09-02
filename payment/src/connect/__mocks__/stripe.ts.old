@@ -1,0 +1,9 @@
+export const stripe = {
+  charges: {
+    create: jest.fn().mockResolvedValue({}),
+  },
+};
+// await stripe.charges.create({
+//     currency: "usd",
+//     amount: 50,
+//     source: token,

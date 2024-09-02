@@ -1,0 +1,24 @@
+{
+  "name": "ticketpage_micro",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "update:common:all": "cd order && npm run update:common && cd ../ticket && npm run update:common&& cd ../auth && npm run update:common && cd ../expiration && npm run update:common&& cd ../payment && npm run update:common ",
+    "start:all": "npm-run-all --parallel start:ticket start:auth start:order start:payment start:expiration",
+    "start:ticket": "npm --prefix ./ticket run start:local",
+    "start:auth": "npm --prefix ./auth run start:local",
+    "start:expiration": "npm --prefix ./expiration run start:local",
+    "start:order": "npm --prefix ./order run start:local",
+    "start:payment": "npm --prefix ./payment run start:local"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@types/bull": "^4.10.0"
+  }
+}

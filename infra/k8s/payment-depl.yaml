@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ticket-payment-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ticket-payment
+  template:
+    metadata:
+      labels:
+        app: ticket-payment
+    spec:
+      containers:
+      - name: ticket-payment
+        image: gcr.io/simpl-project138/payment
+        env:
+          - name: NATS_CLIENT_ID
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name      
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ticket-payment-clusterip-srv
+spec:
+  selector:
+    app: ticket-payment
+  ports:
+    - name: ticket-payment
+      protocol: TCP
+      port: 4003
+      targetPort: 4003

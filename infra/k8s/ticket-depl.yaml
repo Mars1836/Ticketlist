@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ticket-ticket-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ticket-ticket
+  template:
+    metadata:
+      labels:
+        app: ticket-ticket
+    spec:
+      containers:
+        - name: ticket-ticket
+          image: gcr.io/simpl-project138/ticket
+          env:
+            - name: NATS_CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ticket-ticket-clusterip-srv
+spec:
+  selector:
+    app: ticket-ticket
+  ports:
+    - name: ticket-ticket
+      protocol: TCP
+      port: 4001
+      targetPort: 4001

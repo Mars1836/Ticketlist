@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ticket-payment-monggodb-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ticket-payment-monggodb
+  template:
+    metadata:
+      labels:
+        app: ticket-payment-monggodb
+    spec:
+      containers:
+        - name: ticket-payment-monggodb
+          image: mongo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ticket-payment-monggodb-clusterip-srv
+spec:
+  selector:
+    app: ticket-payment-monggodb
+  ports:
+    - name: ticket-payment-monggodb
+      protocol: TCP
+      port: 27017
+      targetPort: 27017

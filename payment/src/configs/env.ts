@@ -1,0 +1,12 @@
+import { ConstEnv, RunModes } from "@cl-ticket/common";
+const instance = new ConstEnv(process.env.RUN_MODE as RunModes);
+instance.setKey("jwtSecret");
+instance.setKey("mongoUrl");
+instance.setKey("natUrl");
+instance.setKey("passwordSalt");
+instance.setKey("runMode");
+instance.setKey("jwtSecret");
+instance.setKey("stripePublishKey");
+instance.setKey("stripeSecretKey");
+instance.setKey("stripeCliWebhookSercet");
+export const constEnv = instance.const;

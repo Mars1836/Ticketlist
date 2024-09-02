@@ -1,0 +1,12 @@
+import mongoose from "mongoose";
+import { constEnv } from "../configs/env";
+
+export async function connectMongo() {
+  try {
+    console.log("Connecting to: ", constEnv.mongoUrl);
+    await mongoose.connect(constEnv.mongoUrl!);
+    console.log("Connect mongodb success");
+  } catch (error: unknown) {
+    console.log(error);
+  }
+}

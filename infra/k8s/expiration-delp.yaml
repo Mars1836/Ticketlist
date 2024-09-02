@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ticket-expiration-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ticket-expiration
+  template:
+    metadata:
+      labels:
+        app: ticket-expiration
+    spec:
+        containers:
+        - name: ticket-expiration
+          image: gcr.io/simpl-project138/expiration
+          env:
+            - name: NATS_CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name 
+

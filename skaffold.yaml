@@ -1,0 +1,61 @@
+apiVersion: skaffold/v4beta11
+kind: Config
+build:
+  local:
+    push: false
+  # googleCloudBuild:
+  #   projectId: simpl-project138
+  artifacts:
+    - image: gcr.io/simpl-project138/auth
+      context: auth
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: .
+    - image: gcr.io/simpl-project138/client
+      context: client
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.js"
+            dest: .
+    - image: gcr.io/simpl-project138/ticket
+      context: ticket #folder name
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: .
+    - image: gcr.io/simpl-project138/order
+      context: order #folder name
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: .
+    - image: gcr.io/simpl-project138/expiration
+      context: expiration #folder name
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: .
+    - image: gcr.io/simpl-project138/payment
+      context: payment #folder name
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: .
+manifests:
+  rawYaml:
+    - ./infra/k8s/*
+deploy:
+  kubectl: {}

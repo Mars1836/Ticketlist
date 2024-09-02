@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ticket-order-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ticket-order
+  template:
+    metadata:
+      labels:
+        app: ticket-order
+    spec:
+      containers:
+      - name: ticket-order
+        image: gcr.io/simpl-project138/order
+        env:
+          - name: NATS_CLIENT_ID
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name      
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ticket-order-clusterip-srv
+spec:
+  selector:
+    app: ticket-order
+  ports:
+    - name: ticket-order
+      protocol: TCP
+      port: 4002
+      targetPort: 4002
