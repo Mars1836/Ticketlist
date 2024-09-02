@@ -1,0 +1,31 @@
+{
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NEXT_PUBLIC_RUN_MODE=kube next dev",
+    "start:local": "cross-env NEXT_PUBLIC_RUN_MODE=local next dev -p 3999",
+    "build": "next build",
+    "start": "cross-env NEXT_PUBLIC_RUN_MODE=kube next start",
+    "lint": "next lint",
+    "update:common": "npm i @cl-ticket/common@latest"
+  },
+  "dependencies": {
+    "@cl-ticket/common": "^1.0.51",
+    "@stripe/react-stripe-js": "^2.8.0",
+    "@stripe/stripe-js": "^4.4.0",
+    "axios": "^1.7.3",
+    "cross-env": "^7.0.3",
+    "next": "14.2.5",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-hot-toast": "^2.4.1",
+    "react-stripe-checkout": "^2.6.3",
+    "server-only": "^0.0.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.40",
+    "tailwindcss": "^3.4.7"
+  }
+}
