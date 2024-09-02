@@ -7,7 +7,8 @@
     "test:local": "cross-env RUN_MODE=local jest --watchAll --no-cache",
     "start": "cross-env RUN_MODE=kube ts-node-dev src/index.ts",
     "start:local": "cross-env RUN_MODE=local ts-node-dev src/index.ts",
-    "update:common": "npm i @cl-ticket/common@latest"
+    "update:common": "npm i @cl-ticket/common@latest",
+    "test:ci": "cross-env RUN_MODE=local dotenv -e .env.test jest"
   },
   "jest": {
     "preset": "ts-jest",
@@ -35,6 +36,7 @@
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
     "dotenv": "^16.4.5",
+    "dotenv-cli": "^7.4.2",
     "express": "^4.19.2",
     "express-async-errors": "^3.1.1",
     "express-validator": "^7.1.0",

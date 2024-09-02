@@ -30,15 +30,19 @@ router.post(
     const { orderId } = req.body;
     const order = await orderModel.findOne({
       _id: orderId,
-      userId: req.user?.id,
-      status: {
-        $in: [OrderStatus.Created, OrderStatus.WaitingPayment],
-      },
     });
     if (!order) {
-      throw new BadRequestError("The order is not available for payment");
+      throw new NotFoundError("The order is not available for payment");
     }
-
+    if (req.user?.id !== order.userId) {
+      throw new NotAuthorizedError();
+    }
+    if (order.status === OrderStatus.Cancelled) {
+      throw new BadRequestError("The order is cancelled");
+    }
+    if (order.status === OrderStatus.Finished) {
+      throw new BadRequestError("The order was alrealy paid");
+    }
     const paymentIntent = await stripe.paymentIntents.create({
       amount: order.price * 100,
       currency: "usd",

@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
 import { constEnv } from "../configs/env";
 import { randomBytes } from "crypto";
-// import { stripe } from "../connect/stripe";
+import { stripe } from "../connect/stripe";
 // This will create an new instance of "MongoMemoryServer" and automatically start it
 let mongod: MongoMemoryServer;
 declare global {
@@ -26,7 +26,9 @@ global.login = (userId?: string) => {
   return cookies;
 };
 jest.mock("../connect/nat");
-// jest.mock("../connect/stripe");
+jest.mock("../connect/redis");
+// jest.mock("../connect/redis");
+jest.mock("../connect/stripe");
 beforeAll(async () => {
   {
     mongod = await MongoMemoryServer.create();
