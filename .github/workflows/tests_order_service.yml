@@ -3,7 +3,7 @@ on:
   pull_request
 jobs:
   build:
-    runs-on: ubunbu-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: action/checkout@v2
       - run: cd order && npm install && npm run test:ci
