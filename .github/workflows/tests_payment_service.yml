@@ -16,4 +16,4 @@ jobs:
         run: cd payment && npm install
 
       - name: Run tests
-        run: cd auth && npm run test:ci
+        run: cd payment && npm run test:ci
