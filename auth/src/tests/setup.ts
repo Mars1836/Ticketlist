@@ -5,8 +5,6 @@ import mongoose from "mongoose";
 let mongod: MongoMemoryServer;
 beforeAll(async () => {
   {
-    process.env.JWT_SECRET_LOCAL = "asdd";
-    process.env.PASSWORD_SALTROUND = "10";
     mongod = await MongoMemoryServer.create();
     const uri = mongod.getUri();
 

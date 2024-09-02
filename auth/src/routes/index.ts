@@ -1,12 +1,7 @@
 import express, { NextFunction, Request, Response } from "express";
-import { body, validationResult } from "express-validator";
-import { DatabaseConnectionError } from "@cl-ticket/common";
-import { RequestValidationError } from "@cl-ticket/common";
+import { body } from "express-validator";
 import { userCtl } from "../controllers/user.controller";
-import { userService } from "../services/user";
-import { UserAttr } from "../models/user.model";
 import { handleAsync } from "@cl-ticket/common";
-import { verifyUser } from "@cl-ticket/common";
 import { requireAuth } from "@cl-ticket/common";
 
 const router = express.Router();
