@@ -13,7 +13,8 @@
     "start:auth": "npm --prefix ./auth run start:local",
     "start:expiration": "npm --prefix ./expiration run start:local",
     "start:order": "npm --prefix ./order run start:local",
-    "start:payment": "npm --prefix ./payment run start:local"
+    "start:payment": "npm --prefix ./payment run start:local",
+    "git:push":"git add . && git commit -m 'a' && git push"
   },
   "author": "",
   "license": "ISC",
