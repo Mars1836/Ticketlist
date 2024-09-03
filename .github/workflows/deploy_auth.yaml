@@ -23,7 +23,7 @@ jobs:
         env:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-      - run: docker push mars1836/ticketing-auth
       - name: build docker image 
         run: cd auth && docker build -t mars1836/ticketing-auth .
-
+      - run: docker push mars1836/ticketing-auth
+      
