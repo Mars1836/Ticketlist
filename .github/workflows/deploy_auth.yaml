@@ -9,6 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: ticket
     steps:
       - name: checkout repo
         uses: 'actions/checkout@v2'
