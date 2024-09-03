@@ -13,7 +13,7 @@ jobs:
       - name: checkout repo
         uses: 'actions/checkout@v2'
       - name: build docker image 
-        run: cd auth && docker build -t mars1836/ticketing-auth
+        run: cd auth && docker build -t mars1836/ticketing-auth .
       # - name: login docker login
       #   run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
       #   env:
