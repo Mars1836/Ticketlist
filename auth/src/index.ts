@@ -7,6 +7,6 @@ import app from "./app";
 connectMongo();
 
 app.listen(4000, () => {
-  console.log("dev auth..");
+  console.log("dev auth...");
   console.log("Listening on 4000 :: Auth service");
 });
