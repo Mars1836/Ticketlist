@@ -12,8 +12,9 @@ jobs:
     steps:
       - name: checkout repo
         uses: 'actions/checkout@v2'
-      - name: build docker image 
-        run: cd auth && docker build -t mars1836/ticketing-auth .
       - name: login docker login
         run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
       - run: docker push mars1836/ticketing-auth
+      - name: build docker image 
+        run: cd auth && docker build -t mars1836/ticketing-auth .
+
