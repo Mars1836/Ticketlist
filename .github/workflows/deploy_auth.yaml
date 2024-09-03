@@ -1,6 +1,9 @@
 name: deploy_auth
 on:
   push:
+    branches:
+      - b1
+      - main
     paths: 
       - 'auth/**'
 jobs:
